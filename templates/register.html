@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sign In - Ambika SuperShopee</title>
+
+		<link
+			rel="icon"
+			type="image/webp"
+			href=" {% static 'images/icons/favicon.webp'%}"
+		/>
+		<link rel="stylesheet" href="{% static 'css/signIn.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin="crossorigin"
+		/>
+		<!-- Scripts -->
+		<script
+			src="https://kit.fontawesome.com/64d58efce2.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="{% static 'js/app.js' %}"></script>
+	</head>
+
+	<body>
+		<div class="signinContainer">
+			<a class="back" href="{{ request.META.HTTP_REFERER|escape }}"
+				><i class="fas fa-arrow-left fa-lg"></i>
+			</a>
+			<form action="register" class="box" method="POST">
+				{% csrf_token %}
+				<div class="signbox">
+					<h1>Sign in</h1>
+					<input type="text" name="name" placeholder="Name" />
+					<input type="text" name="username" placeholder="Username" />
+					<input type="text" name="email" placeholder="Email" />
+					<input
+						type="password"
+						name="password"
+						placeholder="Password"
+					/>
+					<input
+						type="password"
+						name="password2"
+						placeholder="Confirm Password"
+					/>
+					<input type="submit" name="" value="Sign In" />
+				</div>
+			</form>
+			<div class="backgroundImage">
+				<img src="{% static 'images/backgrounds/login.png' %}" />
+			</div>
+
+			<div class="msg">
+				{% for message in messages %}
+				<h3>{{message}}</h3>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>

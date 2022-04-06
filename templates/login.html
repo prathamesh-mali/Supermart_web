@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In - Ambika SuperShopee</title>
+
+  {% load static %}
+
+  <link rel="icon" type="image/webp" href=" {% static 'images/favicon.webp'%}" />
+
+  <link rel="stylesheet" href="{% static 'css/loginPage.css' %}" />
+
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <!-- Scripts -->
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+</head>
+
+<body>
+  <a class="back" href="{{ request.META.HTTP_REFERER|escape }}"><i class="fas fa-arrow-left fa-lg"></i> </a>
+  <div class="login_container">
+    <form action="login" class="box" method="POST">
+      {% csrf_token %}
+      <div class="loginBox">
+        <h1>Log In</h1>
+        <input type="text" name="username" placeholder="Username" />
+        <input type="Password" name="password" placeholder="Password" />
+        <input type="submit" value="Log in" />
+      </div>
+    </form>
+    <div class="backgroundImage">
+      <img src="{% static 'images/backgrounds/login.png' %}" />
+    </div>
+  </div>
+  <div class="msg">
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

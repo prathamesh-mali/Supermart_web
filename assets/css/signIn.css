@@ -1,0 +1,109 @@
+@import "variables.css";
+
+body {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Poppins";
+  background-color: var(--Orange);
+}
+
+.signinContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 40%;
+  max-width: 80em;
+}
+
+.box {
+  width: 500px;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.801);
+  border-radius: 2.5em;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-20%, -50%);
+  text-align: center;
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+  border: 0;
+  font-size: 20.5px;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid var(--Orange);
+  padding: 14px 10px;
+  width: 300px;
+  outline: none;
+  color: #000;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+  width: 340px;
+  border-color: var(--blue);
+}
+
+.box h1 {
+  font-size: 30px;
+  color: var(--formheading);
+  text-transform: uppercase;
+  font-weight: 550;
+}
+
+.box input[type="submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  font-size: 21px;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid var(--Orange);
+  padding: 14px 10px;
+  width: 310px;
+  outline: none;
+  color: var(--formheading);
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.box input[type="submit"]:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 50%;
+  left: 85%;
+  transform: translate(-85%, -50%);
+}
+
+.signbox {
+  margin-top: 28%;
+  transform: translate(0, -20%);
+}
+
+.msg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+
+.back {
+  position: absolute;
+  left: 1em;
+  top: 0.6em;
+}
+
+.back i {
+  color: var(--formheading);
+
+}

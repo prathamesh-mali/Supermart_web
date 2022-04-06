@@ -1,0 +1,98 @@
+/* .starIcon {
+  color: var(--starColor);
+} */
+.offer {
+	padding-block: 5em;
+}
+
+.flex {
+	display: flex;
+}
+
+#ratingIcon {
+	color: rgb(255, 198, 40);
+}
+
+.offerhighlighttag {
+	font-weight: 500;
+}
+
+.price {
+	display: flex;
+}
+
+.pricecost {
+	margin-left: 2.4em;
+}
+
+.highlights {
+	display: flex;
+}
+
+.descrip {
+	flex: 1;
+	margin-left: 2.875em;
+}
+
+.quantitySelector {
+	display: flex;
+	margin-top: 1em;
+}
+
+.quantityInput {
+	padding: 0.5em 0.2em 0.5em 2em;
+	border-radius: 10px;
+	border-style: none;
+	width: 6em;
+}
+
+.cartbtn {
+	margin-left: 1em;
+	margin-top: 0;
+	text-decoration: none;
+}
+
+.quantitylist li:hover {
+	border: 0.1em solid var(--hoverOrange);
+}
+
+.addtoCart-btn {
+	border: none;
+	border: 0 solid;
+	border-radius: 10px;
+	background-color: var(--darkorange);
+	height: 2.5em;
+	width: 10em;
+	font-family: "Poppins";
+	cursor: pointer;
+	color: var(--white);
+}
+
+.addtoCart-btn:hover {
+	background-color: var(--hoverOrange);
+	color: #000;
+	transition: 1s;
+}
+
+.quantityInput-btn {
+	border-radius: 10px;
+	background-color: var(--darkorange);
+	height: 2em;
+	width: 1.5em;
+	font-family: "Poppins";
+	cursor: pointer;
+	color: var(--white);
+}
+
+.quantitydiv {
+	margin-left: 1em;
+	padding: 0;
+}
+
+.quantityInputText {
+	background-color: var(--white);
+	width: 6em;
+	border-radius: 10px;
+	text-align: center;
+	margin-inline: 0.15em;
+}

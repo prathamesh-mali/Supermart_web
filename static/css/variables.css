@@ -1,0 +1,22 @@
+:root {
+  --white: rgb(255, 255, 255);
+  --lightGrey: rgb(139, 139, 139);
+  --dirtygrey: rgb(241, 240, 240);
+  --itemgrey: rgb(241, 240, 240);
+  --darkorange: #ff523b;
+  --Orange: #e77942;
+  --hoverOrange: #d36128;
+  --blue: rgba(63, 119, 204, 0.85);
+  --grey: rgb(34, 34, 34);
+  --btnDark: rgb(32, 32, 32);
+  --hoverBgColor: #afafaf;
+  --lightPeach: rgba(233, 196, 184, 0.63);
+  --footerDark: rgba(197, 154, 140, 0.993);
+  --footerLight: rgba(245, 205, 191, 0.644);
+  --formheading: #000000a8;
+  --starColor: rgb(253, 219, 69);
+}
+
+.vertical-padding {
+  padding: 5em;
+}

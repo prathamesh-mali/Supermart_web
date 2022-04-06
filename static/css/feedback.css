@@ -1,0 +1,80 @@
+@import "variables.css";
+
+body {
+	margin: 0%;
+	padding: 0%;
+	font-family: sans-serif;
+	background: var(--Orange);
+}
+
+.box {
+	width: 300px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(255, 255, 255, 0.801);
+	text-align: center;
+	border-radius: 10%;
+}
+
+.box h1 {
+	color: var(--formheading);
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.box input[type="text"] {
+	border: 0;
+	font-size: medium;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid var(--Orange);
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: #000;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+
+.box input[type="text"]:focus {
+	width: 240px;
+	border-color: var(--blue);
+}
+
+.subBtn {
+	border: 0;
+	background: none;
+	display: block;
+	font-size: medium;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid var(--Orange);
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: var(--formheading);
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.subBtn:hover {
+	background: var(--blue);
+	color: #fff;
+	border-color: var(--blue);
+}
+
+.back {
+	position: absolute;
+	left: 1em;
+	top: 0.6em;
+}
+
+.back i {
+	color: var(--formheading);
+}

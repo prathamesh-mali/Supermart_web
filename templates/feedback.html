@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Favicons -->
+		<link
+			rel="icon"
+			type="image/webp"
+			href=" {% static 'images/favicon.webp' %}"
+		/>
+
+		<title>FeedBack Form - Ambika SuperShopee</title>
+
+		<link rel="stylesheet" href="{% static 'css/feedback.css' %}" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<script
+			src="https://kit.fontawesome.com/64d58efce2.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="{% static 'js/app.js' %}"></script>
+	</head>
+
+	<body>
+		<a class="back" href="{{ request.META.HTTP_REFERER|escape }}"
+			><i class="fas fa-arrow-left fa-lg"></i>
+		</a>
+		<form method="POST" class="box">
+			{% csrf_token %}
+			<h1>Feedback Form</h1>
+			<input type="text" name="name" placeholder="Full Name" required />
+			<input type="text" name="sub" placeholder="Feedback" required />
+			<input
+				type="text"
+				name="desc"
+				placeholder="Describe (optional)"
+				required
+			/>
+			<button type="Submit" class="subBtn">Submit</button>
+		</form>
+	</body>
+</html>

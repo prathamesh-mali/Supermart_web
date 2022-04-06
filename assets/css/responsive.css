@@ -1,0 +1,125 @@
+@media screen and (max-width: 70em) {
+	.navMenu {
+		display: none;
+		position: absolute;
+		top: 3rem;
+		left: 0;
+		right: 0;
+		height: 100vh;
+		width: 100%;
+		background-color: #fff;
+		overflow: auto;
+	}
+
+	.hamburger {
+		display: block;
+	}
+
+	.navMenu.show {
+		display: block;
+	}
+
+	.navItem > a {
+		line-height: 1;
+		padding: 1.6rem 2rem;
+	}
+
+	.navItem:hover > a {
+		transform: scale(1);
+		background-color: var(--hoverBgColor);
+	}
+
+	.banner-img {
+		width: 100% !important;
+		height: auto;
+	}
+
+	.navMenu ul {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.dropdownMenu {
+		position: relative;
+		width: 100%;
+		position: initial;
+		left: initial;
+		top: initial;
+	}
+
+	.hamburger-btn {
+		display: block;
+	}
+
+	.searchField {
+		position: absolute;
+		right: 4rem;
+	}
+
+	.greeting {
+		padding-left: 2em;
+	}
+
+	.offer-small-container img {
+		width: 300px;
+		height: 350px;
+	}
+
+	.offer-col {
+		flex-basis: 25%;
+		min-width: 2.5em;
+	}
+
+	#owl-carousel img {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 776px) {
+	.offer-col {
+		flex-basis: 89%;
+		min-width: 2.5em;
+	}
+
+	#owl-carousel img {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 790px) {
+	.offer-col {
+		flex-basis: auto;
+		min-width: 2.5em;
+	}
+
+	#owl-carousel img {
+		max-width: 100%;
+	}
+
+	.login_container {
+		flex-basis: 50%;
+	}
+
+	.signinContainer {
+		flex-basis: 50%;
+	}
+}
+
+@media screen and (max-width: 1350px) {
+	.backgroundImage {
+		display: none;
+	}
+
+	.box {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.msg {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform: translate(-50%, 0);
+	}
+}

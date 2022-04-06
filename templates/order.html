@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    {% load static %}
+    {% load cart %}
+    {% load custom %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User & orders - Ambika SuperShopee</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/webp" href="{% static 'images/icons/favicon.webp' %}" />
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <!-- css file -->
+    <link rel="stylesheet" href="{% static '/css/cart.css' %}">
+    <link rel="stylesheet" href="{% static '/css/order.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    
+
+
+
+    </head>
+    <body>
+        <header>
+            <div id="wrap">
+                <nav>
+                    <div class="BrandName">
+                        <a href="/">
+                            <h2>
+                                <i id="logoIcon" class="fas fa-shopping-cart"></i>
+                                Ambika SuperShopee
+                            </h2>
+                        </a>
+                    </div>
+                    <button class="hamburger" id="hamburgerbtn">
+                        <i class="fas fa-bars fa-2x"></i>
+                    </button>
+                    <div class="navMenu" id="navMenu">
+                        <ul>
+                            <li class="navItem">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="navItem dropdown">
+                                <a href="#">Categories <i class="fas fa-caret-down"></i></a>
+                                <div class="dropdownMenu">
+                                    <ul>
+                                        {% for category in categories %}
+                                        <li class="dropdownItem">
+                                            <a href="catProd/{{ category.id }}">{{ category }}</a>
+                                        </li>
+                                        <div class="arrow"></div>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="navItem">
+                                <a href="allproducts">All Products</a>
+                            </li>
+                            <li class="navItem">
+                                <a href="cart">Cart <i id="Icon" class="fas fa-shopping-bag"></i></a>
+                            </li>
+                            <li class="navItem dropdown">
+                                <a href="#">Contact <i class="fas fa-caret-down"></i></a>
+                                <div class="dropdownMenu">
+                                    <ul>
+                                        <li class="dropdownItem">
+                                            <a href="mailto:ambikashop@gmail.com">Mail</a>
+                                        </li>
+                                        <li class="dropdownItem">
+                                            <a href="feedback">Feedback</a>
+                                        </li>
+                                        <div class="arrow"></div>
+                                    </ul>
+                                </div>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="navItem">
+                                <a href="order" class="navItem">{{ user.username }}<i class="fas fa-user"></i></a>
+                            </li>
+                            <li class="navItem">
+                                <a href="accounts/logout" class="btn transparent">Log Out</a>
+                            </li>
+                            {% else %}
+                            <li class="navItem">
+                                <a href="accounts/login" class="btn transparent">Log In</a>
+                            </li>
+                            <li class="navItem">
+                                <a href="accounts/register" class="btn opaque">Sign In</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="searchcontent">
+                        <div class="searchField">
+                            <button class="searchbtn" id="searchbtn" type="button" data-action="search-toggle">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <div class="searchMenu" id="searchMenu">
+                                <form action="search">
+                                    <input class="searchBar" name='search' id='search'  type="search" placeholder="Search" required>
+                                    <button class="formbtn" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="formbtn search-close">
+                                        <i class="fas fa-times "></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="User">
+            <h1 class="userheading">Your Name: </h1>
+            <h1 class="userTag">{{request.user}}</h1>
+            <h2 class=cartlist>Items in cart : {{ lenCart }}</h2>
+        </div>
+
+        <div class="small-container cart">
+        <h1 class="cart-heading">Your Cart <i class="fas fa-shopping-cart"></i></h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Sr.no</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Total</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %} 
+            
+            <tr>
+                <td>{{ forloop.counter }}.</td>
+                <td><a href="productinfo/{{ order.product.id }}"><img src="{{ order.product.img.url }}" alt="{{ order.product.name }}"></a></td>
+                <td><a href="productinfo/{{ order.product.id }}">{{ order.product.desc }}</a></td>
+                <td><a href="productinfo/{{ order.product.id }}">{{ order.quantity }}</a></td>
+                <td>{{ order.price|currency }}</td>
+                <td><a href="productinfo/{{ order.product.id }}">{{ order.date }}</a></td>
+                <td>{{ order.time }}</td>
+                <td>{{ order.quantity|multiply:order.price|currency }}</td>
+                {% if order.status %}
+                <td><span  class="completed"><small>Completed</small></span></td>
+                {% else %}
+                <td><span class="pending"><small >Pending</small></span></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+    
+
+        <footer>
+            <div class="footer-content">
+                <h2>About us.</h2>
+                <a class="footerLogo" href="index.html">
+                    <h2>
+                        <i id="footerIcon" class="fas fa-shopping-cart"></i>Ambika SuperShopee
+                    </h2>
+                </a>
+                <p>
+                    <b>Address :</b>
+                    Vakola Bridge, opp to Cheezila,</br>
+                    Santacruz (East), Mumbai 400055.
+                    </br>
+                    <b>Contact :</b>
+                    <a href="tel:7045447080." class="social-links">7045447080.</a>
+                </p>
+                <div class="footer-links">
+                    <h2>Follow us</h2>
+                    <div class="links">
+                        <a class="horizontal-padding social-links" href="instagram.com">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="horizontal-padding social-links" href="facebook.com">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static 'js/modal.js' %}"></script>
+    </body>
+</html>

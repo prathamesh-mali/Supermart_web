@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% static "images" as baseUrl %}
+    {% load custom %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <title>Ambika Supermarket</title>
+
+
+    <link rel="icon" type="image/webp" href=" {% static 'images/icons/favicon.webp'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css'%}">
+
+    <!--owl carousel-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+    <header>
+        <div id="wrap">
+            <nav>
+                <div class="BrandName">
+                    <a href="/">
+                        <h2>
+                            <i id="logoIcon" class="fas fa-shopping-cart"></i>
+                            Ambika SuperShopee
+                        </h2>
+                    </a>
+                </div>
+                <button class="hamburger" id="hamburgerbtn">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
+                <div class="navMenu" id="navMenu">
+                    <ul>
+                        <li class="navItem">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="navItem dropdown">
+                            <a href="#">Categories <i class="fas fa-caret-down"></i></a>
+                            <div class="dropdownMenu">
+                                <ul>
+                                    {% for category in categories %}
+                                    <li class="dropdownItem">
+                                        <a href="catProd/{{ category.id }}">{{ category }}</a>
+                                    </li>
+                                    <div class="arrow"></div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="navItem">
+                            <a href="allproducts">All Products</a>
+                        </li>
+                        <li class="navItem">
+                            <a href="cart">Cart
+                                <i id="Icon" class="fas fa-shopping-bag"></i>
+                            </a>
+                        </li>
+                        <li class="navItem dropdown">
+                            <a href="#">Contact <i class="fas fa-caret-down"></i></a>
+                            <div class="dropdownMenu">
+                                <ul>
+                                    <li class="dropdownItem">
+                                        <a href="mailto:ambikashop@gmail.com">Mail</a>
+                                    </li>
+                                    <li class="dropdownItem">
+                                        <a href="feedback">Feedback</a>
+                                    </li>
+                                    <div class="arrow"></div>
+                                </ul>
+                            </div>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="navItem">
+                            <a href="order" class="navItem">{{ user.username }}<i class="fas fa-user"></i></a>
+                        </li>
+                        <li class="navItem">
+                            <a href="accounts/logout" class="btn transparent">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="navItem">
+                            <a href="accounts/login" class="btn transparent">Log In</a>
+                        </li>
+                        <li class="navItem">
+                            <a href="accounts/register" class="btn opaque">Sign In</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="searchcontent">
+                    <div class="searchField">
+                        <button class="searchbtn" id="searchbtn" type="button" data-action="search-toggle">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="searchMenu" id="searchMenu">
+                            <form action="search">
+                                <input class="searchBar" name='search' id='search'  type="search" placeholder="Search" required>
+                                <button class="formbtn" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="formbtn search-close">
+                                    <i class="fas fa-times "></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <div id="carousel" class="owl-carousel owl-theme">
+        <div class="item">
+            <img src="{% static 'images/carousel/banner - copy.jpg'%}">
+        </div>
+        <div class="item">
+            <img src="{% static 'images/carousel/Banner 1 .jpg'%}">
+        </div>
+        <div class="item"><img src="{% static 'images/carousel/Banner 2.jpg'%}"></div>
+            <div class=" item"><img src="{% static 'images/carousel/Banner 3.jpg'%}">
+        </div>
+    </div>
+
+
+    <div class="container ">
+        <div class="small-container">
+            <h2 class="title">Back in Stock</h2>
+            <div class="row">
+                {% for product in products %}
+                {% if product.backInStock  %}
+                <div id="item" class="col-3">
+                    <div class="prodImage">
+                        <a href="productinfo/{{ product.id }}" id="items"><img src="{{ product.img.url }}"
+                                alt={{ product.name }}></a>
+                    </div>
+                    <div class="prodDesc">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.price|currency }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <h2 class="title" id="mp">Discounted Products</h2>
+            <div class="row">
+                {% for product in products %}
+                {% if product.discount %}
+                <div id="item" class="col-3">
+                    <div class="prodImage">
+                        <a href="productinfo/{{ product.id }}" id="items"><img src="{{ product.img.url }}"
+                                alt={{ product.name }}></a>
+                    </div>
+                    <div class="prodDesc">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.price|currency }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h2 class="title" id="offer">Offer</h2>
+    <div class="offer offer-container flex flex-jc-sb">
+        <div class="offer-small-container">
+            <div class="offer-row">
+                {% for product in products %}
+                {% if product.offer %}
+                <div class="offer-col setP">
+                    <div class="offer-img">
+                        <a href="productinfo/{{ product.id }}" id="items"><img src="{{ product.img.url }}" 
+                            alt={{ product.name }}>
+                        </a>
+                    </div>
+                    <div class="offer-desc">
+                        <p>
+                            {{ product.desc }}
+                        </p>
+                        <p>
+                            <strong>{{ product.offerPercentage }}</strong>
+                        </p>
+                        <p>
+                            Price:
+                            <strong>{{ product.offerPrice|currency }}/-</strong><br>
+                            <del>{{ product.price|currency }}</del>
+                        </p>
+                        <p>
+                            You save :{{ product.offer_benefit|currency }}
+                        </p>
+                        <button type="button" class="offer-btn" onclick="window.location.href = 'productinfo/{{ product.id }}'";>
+                            Buy Now &#8599
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h2>About us.</h2>
+            <a class="footerLogo" href="index.html">
+                <h2>
+                    <i id="footerIcon" class="fas fa-shopping-cart"></i>Ambika SuperShopee
+                </h2>
+            </a>
+            <p>
+                <b>Address :</b>
+                Vakola Bridge, opp to Cheezila,</br>
+                Santacruz (East), Mumbai 400055.
+                </br>
+                <b>Contact :</b>
+                <a href="tel:7045447080." class="social-links">7045447080.</a>
+            </p>
+            <div class="footer-links">
+                <h2>Follow us</h2>
+                <div class="links">
+                    <a class="horizontal-padding social-links" href="instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="horizontal-padding social-links" href="facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- scripts -->
+    <script src="{% static 'js/carousel.js'%}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    
+</body>
+</html>

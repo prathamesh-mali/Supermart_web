@@ -1,0 +1,176 @@
+.cart {
+	margin: 0 auto;
+}
+
+.cart h1 {
+	position: relative;
+	left: 5%;
+	width: 9em;
+	margin-top: 2em;
+}
+
+table a {
+	text-decoration: none;
+	color: black;
+}
+
+thead tr th {
+	text-align: center;
+}
+
+table {
+	font-size: 18px;
+	margin-bottom: 10em;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 2em;
+}
+
+tbody tr td {
+	text-align: center;
+}
+
+table img {
+	width: 200px;
+	height: 200px;
+	border-radius: 10px;
+}
+
+table tbody tr td {
+	padding-top: 0.5em;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 1em;
+}
+
+table thead {
+	background-color: var(--darkorange);
+}
+
+thead th {
+	/* padding: 0em 1em 0em 1em; */
+	width: 20em;
+	text-align: left;
+}
+
+.total td {
+	border-top: 2.5px solid var(--darkorange);
+}
+
+.modal-bg {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s;
+	z-index: 1000;
+}
+
+.bg-active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.modal-button {
+	position: relative;
+	left: 50%;
+	padding-top: 30px;
+	width: 7.5em;
+	transform: translateX(-50%);
+	margin-bottom: 3em;
+	margin-top: 1em;
+}
+
+.modal-btn {
+	width: 9em;
+	height: 4em;
+	background-color: var(--darkorange);
+	color: white;
+	padding: 10px 10px;
+	border: none;
+	border: 0 solid;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.modal {
+	position: relative;
+	font-family: "Poppins";
+	background-color: white;
+	width: 50%;
+	height: 31.5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 5px;
+	border: 0 solid #fff;
+	border-radius: 10px;
+}
+
+.modal label,
+input,
+.modalSubmit {
+	padding: 1px;
+}
+
+.modal button {
+	font-size: 14px;
+	margin-top: 9px;
+	padding: 10px 10px;
+	background-color: var(--darkorange);
+	color: white;
+	width: 10em;
+	border: none;
+	border: 0 solid;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.modal-close {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: visibility 0s, opacity 0.5s;
+}
+
+input[type="text"],
+input[type="phone"] {
+	border: 0;
+	background: none;
+	display: block;
+	height: 5em;
+	text-align: center;
+	border: 2px solid var(--Orange);
+	width: 300px;
+	outline: none;
+	color: #000;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+
+input[type="text"]:focus,
+input[type="phone"]:focus {
+	width: 340px;
+	border-color: var(--blue);
+}
+
+.modalSubmit:hover {
+	background-color: var(--blue);
+	transition: 0.5s;
+}
+
+.footer {
+	overflow: hidden;
+}
