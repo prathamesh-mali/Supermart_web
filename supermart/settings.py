@@ -81,10 +81,6 @@ WSGI_APPLICATION = 'supermart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SupermartStore',
-        'USER': 'postgres',
-        'PASSWORD': 'Iam101%savage',
-        'HOST': 'localhost',
     }
 }
 
